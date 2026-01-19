@@ -1,0 +1,8 @@
+# Local configs
+config.yaml
+config.*.yaml
+config.*.yml
+!config.sample.yaml
+
+# Local runtime
+/tmp/tui-board-tts.wav

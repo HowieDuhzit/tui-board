@@ -1,0 +1,175 @@
+host: prod-edge-03
+profile: ops
+refresh: 5s
+
+panels:
+  alerts:
+    title: ALERTS
+  news:
+    title: NEWS / FEED
+  markets:
+    title: MARKETS
+  git:
+    title: GIT / CI
+  system:
+    title: SERVERS / SYSTEM
+
+sources:
+  - id: rss-hn
+    type: rss
+    url: https://news.ycombinator.com/rss
+    panel: news
+    interval: 30s
+    tags: [tech]
+    notify:
+      enabled: true
+      device: ""
+      sound: ""
+
+  - id: rss-verge
+    type: rss
+    url: https://www.theverge.com/rss/index.xml
+    panel: news
+    interval: 45s
+    tags: [tech]
+
+<<<<<<< HEAD
+=======
+    notify:
+      enabled: true
+      device: ""
+      sound: ""
+>>>>>>> d81e1b6 (Initial Commit)
+  - id: rss-openai
+    type: rss
+    url: https://openai.com/news/rss.xml
+    panel: news
+    interval: 60s
+    tags: [ai, openai]
+
+<<<<<<< HEAD
+=======
+    notify:
+      enabled: true
+      device: ""
+      sound: ""
+>>>>>>> d81e1b6 (Initial Commit)
+  - id: rss-google-ai
+    type: rss
+    url: https://blog.research.google/feeds/posts/default?alt=rss
+    panel: news
+    interval: 60s
+    tags: [ai, research]
+
+<<<<<<< HEAD
+=======
+    notify:
+      enabled: true
+      device: ""
+      sound: ""
+>>>>>>> d81e1b6 (Initial Commit)
+  - id: rss-coindesk
+    type: rss
+    url: https://feeds.feedburner.com/CoinDesk
+    panel: markets
+    interval: 45s
+    tags: [crypto]
+
+<<<<<<< HEAD
+=======
+    notify:
+      enabled: true
+      device: ""
+      sound: ""
+>>>>>>> d81e1b6 (Initial Commit)
+  - id: rss-github-status
+    type: rss
+    url: https://www.githubstatus.com/history.rss
+    panel: alerts
+    interval: 30s
+    tags: [status, github]
+
+<<<<<<< HEAD
+=======
+    notify:
+      enabled: true
+      device: ""
+      sound: ""
+>>>>>>> d81e1b6 (Initial Commit)
+  - id: rss-bubbletea-releases
+    type: rss
+    url: https://github.com/charmbracelet/bubbletea/releases.atom
+    panel: git
+    interval: 60s
+    tags: [release, bubbletea]
+
+<<<<<<< HEAD
+=======
+    notify:
+      enabled: true
+      device: ""
+      sound: ""
+>>>>>>> d81e1b6 (Initial Commit)
+  - id: rss-golang-releases
+    type: rss
+    url: https://github.com/golang/go/releases.atom
+    panel: git
+    interval: 60s
+    tags: [release, go]
+
+<<<<<<< HEAD
+=======
+    notify:
+      enabled: true
+      device: ""
+      sound: ""
+>>>>>>> d81e1b6 (Initial Commit)
+notifications:
+  enabled: false
+  system: false
+  ntfy:
+    base_url: http://localhost:8080
+    topic: tui-board
+    server_command: "ntfy serve --listen-http :8080"
+  pushover:
+    enabled: false
+    user_key: ""
+    api_token: ""
+  rules:
+    - panel: alerts
+      severity: [crit, warn]
+      cooldown: 30s
+      max_items: 3
+
+ollama:
+  base_url: http://localhost:11434
+  model: mistral:latest
+
+tts:
+  command: "tts --text {text} --model_path {model_path} --pipe_out --out_path /tmp/tui-board-tts.wav"
+  model_path: tts_models/en/ljspeech/vits
+
+theme:
+  bar_fg: "252"
+  bar_bg: "235"
+  border: "238"
+  border_active: "250"
+  header: "250"
+  header_active: "229"
+  header_bg: "235"
+  header_active_bg: "238"
+  text: "247"
+  dim: "244"
+  selected_fg: "234"
+  selected_bg: "229"
+  crit: "196"
+  warn: "214"
+  info: "39"
+  ok: "82"
+  accent: "81"
+  icons:
+    alerts: "!"
+    news: "*"
+    markets: "$"
+    git: "~"
+    system: "#"

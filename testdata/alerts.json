@@ -1,0 +1,20 @@
+[
+  {
+    "id": "a-1",
+    "title": "Disk latency high",
+    "summary": "p95 latency above 120ms",
+    "link": "http://localhost:8099/alerts/a-1",
+    "time": "2024-01-01T19:40:00Z",
+    "severity": "warn",
+    "tags": ["storage", "prod"]
+  },
+  {
+    "id": "a-2",
+    "title": "API error rate",
+    "summary": "5xx above 3%",
+    "link": "http://localhost:8099/alerts/a-2",
+    "time": "2024-01-01T19:38:00Z",
+    "severity": "crit",
+    "tags": "api,prod"
+  }
+]
