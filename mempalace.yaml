@@ -1,0 +1,14 @@
+wing: tui_board
+rooms:
+- name: cmd
+  description: Files from cmd/
+- name: internal
+  description: Files from internal/
+- name: testdata
+  description: Files from testdata/
+- name: scripts
+  description: Files from scripts/
+- name: configuration
+  description: Files from config/
+- name: general
+  description: Files that don't fit other rooms

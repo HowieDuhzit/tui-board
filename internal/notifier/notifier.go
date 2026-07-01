@@ -136,7 +136,7 @@ func (n *Notifier) seenItem(id string) bool {
 
 func (n *Notifier) sendAll(item types.Item, notify *config.SourceNotify) {
 	if n.cfg.Ntfy.BaseURL != "" && n.cfg.Ntfy.Topic != "" {
-		n.sendNtfy(item)
+		n.sendNtfy(item, notify)
 	}
 	if n.cfg.System {
 		_ = sendSystemNotification(item)
@@ -146,7 +146,7 @@ func (n *Notifier) sendAll(item types.Item, notify *config.SourceNotify) {
 	}
 }
 
-func (n *Notifier) sendNtfy(item types.Item) {
+func (n *Notifier) sendNtfy(item types.Item, notify *config.SourceNotify) {
 	url := strings.TrimRight(n.cfg.Ntfy.BaseURL, "/") + "/" + n.cfg.Ntfy.Topic
 	payload := []byte(formatMessage(item))
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
@@ -156,7 +156,13 @@ func (n *Notifier) sendNtfy(item types.Item) {
 		return
 	}
 	req.Header.Set("Title", item.Title)
-	req.Header.Set("Tags", strings.Join(item.Tags, ","))
+	tags := item.Tags
+	if notify != nil && len(notify.NtfyTags) > 0 {
+		tags = notify.NtfyTags
+	}
+	if len(tags) > 0 {
+		req.Header.Set("Tags", strings.Join(tags, ","))
+	}
 	_, _ = http.DefaultClient.Do(req)
 }
 

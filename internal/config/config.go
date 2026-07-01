@@ -57,9 +57,10 @@ type PushoverConfig struct {
 }
 
 type SourceNotify struct {
-	Enabled *bool  `yaml:"enabled"`
-	Device  string `yaml:"device"`
-	Sound   string `yaml:"sound"`
+	Enabled  *bool    `yaml:"enabled"`
+	Device   string   `yaml:"device"`
+	Sound    string   `yaml:"sound"`
+	NtfyTags []string `yaml:"ntfy_tags"`
 }
 
 type Rule struct {

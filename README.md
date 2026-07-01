@@ -74,7 +74,7 @@ notifications:
 - Preset configs: `config.tech.yaml`, `config.crypto.yaml`, `config.games.yaml`, `config.news.yaml`.
 - Summaries require Ollama running and the configured model pulled locally.
 - TTS uses `tts.command` if set; otherwise falls back to OS TTS (`say`, `espeak`, `spd-say`).
-- Coqui TTS example: `tts --text {text} --model_path {model_path} --pipe_out --out_path /tmp/tui-board-tts.wav` (plays via `aplay`/`paplay`/`ffplay`/`play`).
-- Set `tts.model_path` to the local model file path; model names like `tts_models/en/ljspeech/vits` are also accepted and will be routed to `--model_name`.
+- Dia TTS example (primary): `python3 scripts/dia_tts.py --text {text} --model_id {model_path} --pipe_out --out_path /tmp/tui-board-tts.wav`.
+- Set `tts.model_path` to a Dia model id (default: `nari-labs/Dia-1.6B-0626`).
 - Notifications: enable `notifications.system` for local OS notifications, configure `notifications.ntfy` for mobile push, and `notifications.pushover` for Pushover.
-- Per-source notification overrides are available under `sources[].notify` (enable/disable + Pushover device/sound).
+- Per-source notification overrides are available under `sources[].notify` (enable/disable + Pushover device/sound + ntfy tags).

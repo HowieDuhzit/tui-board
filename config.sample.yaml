@@ -25,6 +25,7 @@ sources:
       enabled: true
       device: ""
       sound: ""
+      ntfy_tags: []
 
   - id: rss-verge
     type: rss
@@ -39,6 +40,7 @@ sources:
       enabled: true
       device: ""
       sound: ""
+      ntfy_tags: []
 >>>>>>> d81e1b6 (Initial Commit)
   - id: rss-openai
     type: rss
@@ -53,6 +55,7 @@ sources:
       enabled: true
       device: ""
       sound: ""
+      ntfy_tags: []
 >>>>>>> d81e1b6 (Initial Commit)
   - id: rss-google-ai
     type: rss
@@ -67,6 +70,7 @@ sources:
       enabled: true
       device: ""
       sound: ""
+      ntfy_tags: []
 >>>>>>> d81e1b6 (Initial Commit)
   - id: rss-coindesk
     type: rss
@@ -81,6 +85,7 @@ sources:
       enabled: true
       device: ""
       sound: ""
+      ntfy_tags: []
 >>>>>>> d81e1b6 (Initial Commit)
   - id: rss-github-status
     type: rss
@@ -95,6 +100,7 @@ sources:
       enabled: true
       device: ""
       sound: ""
+      ntfy_tags: []
 >>>>>>> d81e1b6 (Initial Commit)
   - id: rss-bubbletea-releases
     type: rss
@@ -109,6 +115,7 @@ sources:
       enabled: true
       device: ""
       sound: ""
+      ntfy_tags: []
 >>>>>>> d81e1b6 (Initial Commit)
   - id: rss-golang-releases
     type: rss
@@ -123,6 +130,7 @@ sources:
       enabled: true
       device: ""
       sound: ""
+      ntfy_tags: []
 >>>>>>> d81e1b6 (Initial Commit)
 notifications:
   enabled: false
@@ -146,30 +154,5 @@ ollama:
   model: mistral:latest
 
 tts:
-  command: "tts --text {text} --model_path {model_path} --pipe_out --out_path /tmp/tui-board-tts.wav"
-  model_path: tts_models/en/ljspeech/vits
-
-theme:
-  bar_fg: "252"
-  bar_bg: "235"
-  border: "238"
-  border_active: "250"
-  header: "250"
-  header_active: "229"
-  header_bg: "235"
-  header_active_bg: "238"
-  text: "247"
-  dim: "244"
-  selected_fg: "234"
-  selected_bg: "229"
-  crit: "196"
-  warn: "214"
-  info: "39"
-  ok: "82"
-  accent: "81"
-  icons:
-    alerts: "!"
-    news: "*"
-    markets: "$"
-    git: "~"
-    system: "#"
+  command: "python3 scripts/dia_tts.py --text {text} --model_id {model_path} --pipe_out --out_path /tmp/tui-board-tts.wav"
+  model_path: nari-labs/Dia-1.6B-0626
